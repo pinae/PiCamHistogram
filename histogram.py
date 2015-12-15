@@ -12,7 +12,7 @@ import picamera
 import numpy as np
 
 
-def capture_image():
+def capture_image(stream, camera):
     camera.capture(stream, format='jpeg', bayer=True)
 
     # Extract the raw Bayer data from the end of the stream, check the
@@ -80,7 +80,7 @@ if __name__ == '__main__':
         histogram = [0] * 1024
         for i in range(100):
             # Capture the image, including the Bayer data
-            rgb = capture_image()
+            rgb = capture_image(stream, camera)
             print(rgb[1000, 1500][2])
             histogram[rgb[1000, 1500][2]] += 1
         print(histogram)
