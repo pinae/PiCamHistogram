@@ -74,16 +74,15 @@ if __name__ == '__main__':
     stream = io.BytesIO()
     pixels = [(1000, 1500, 1), (1002, 1500, 1), (1004, 1500, 1), (1006, 1500, 1)]
     histograms = [[0] * 1024] * len(pixels)
-    for _ in range(10):
-        with picamera.PiCamera() as camera:
-            # Let the camera warm up for a couple of seconds
-            time.sleep(2)
+    with picamera.PiCamera() as camera:
+        # Let the camera warm up for a couple of seconds
+        time.sleep(2)
 
-            for i in range(10):
-                # Capture the image, including the Bayer data
-                rgb = capture_image(stream, camera)
-                for j, p in enumerate(pixels):
-                    histograms[j][rgb[p[0], p[1], p[2]]] += 1
+        for i in range(10):
+            # Capture the image, including the Bayer data
+            rgb = capture_image(stream, camera)
+            for j, p in enumerate(pixels):
+                histograms[j][rgb[p[0], p[1], p[2]]] += 1
     for histogram in histograms:
         print(", ".join(histogram))
 
