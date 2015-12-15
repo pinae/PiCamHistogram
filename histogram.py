@@ -81,7 +81,7 @@ if __name__ == '__main__':
         for i in range(100):
             # Capture the image, including the Bayer data
             rgb = capture_image()
-            print(rgb[1000, 1500, 2])
-            histogram[rgb[1000, 1500, 2]] += 1
+            print(rgb[1000, 1500][2])
+            histogram[rgb[1000, 1500][2]] += 1
         print(histogram)
 
