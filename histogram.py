@@ -81,8 +81,8 @@ if __name__ == '__main__':
         for i in range(100):
             # Capture the image, including the Bayer data
             rgb = capture_image(stream, camera)
-            for j, x, y, k in enumerate(pixels):
-                histograms[j][rgb[x, y, k]] += 1
+            for j, p in enumerate(pixels):
+                histograms[j][rgb[p[0], p[1], p[2]]] += 1
         for histogram in histograms:
             print(", ".join(histogram))
 
