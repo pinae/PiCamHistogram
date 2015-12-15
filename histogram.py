@@ -78,10 +78,10 @@ if __name__ == '__main__':
         print("Starting to capture ...")
 
         histogram = [0] * 1024
-        for i in range(100):
+        for i in range(1000):
             # Capture the image, including the Bayer data
             rgb = capture_image(stream, camera)
-            print(rgb[1000, 1500][2])
-            histogram[rgb[1000, 1500][2]] += 1
+            print(rgb[1000, 1500, 1])
+            histogram[rgb[1000, 1500, 1]] += 1
         print(histogram)
 
