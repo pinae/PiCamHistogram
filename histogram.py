@@ -75,11 +75,13 @@ if __name__ == '__main__':
     with picamera.PiCamera() as camera:
         # Let the camera warm up for a couple of seconds
         time.sleep(2)
-        # Capture the image, including the Bayer data
-        rgb = capture_image()
-        print(rgb[1000, 1500])
-        rgb = capture_image()
-        print(rgb[1000, 1500])
-        rgb = capture_image()
-        print(rgb[1000, 1500])
+        print("Starting to capture ...")
+
+        histogram = [0] * 1024
+        for i in range(100):
+            # Capture the image, including the Bayer data
+            rgb = capture_image()
+            print(rgb[1000, 1500, 2])
+            histogram[rgb[1000, 1500, 2]] += 1
+        print(histogram)
 
