@@ -78,5 +78,8 @@ if __name__ == '__main__':
         # Capture the image, including the Bayer data
         rgb = capture_image()
         print(rgb[1000, 1500])
-
+        rgb = capture_image()
+        print(rgb[1000, 1500])
+        rgb = capture_image()
+        print(rgb[1000, 1500])
 
