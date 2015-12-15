@@ -69,12 +69,14 @@ def capture_image():
 
     return rgb
 
-stream = io.BytesIO()
-with picamera.PiCamera() as camera:
-    # Let the camera warm up for a couple of seconds
-    time.sleep(2)
-    # Capture the image, including the Bayer data
-    rgb = capture_image()
-    print(rgb)
+
+if __name__ == '__main__':
+    stream = io.BytesIO()
+    with picamera.PiCamera() as camera:
+        # Let the camera warm up for a couple of seconds
+        time.sleep(2)
+        # Capture the image, including the Bayer data
+        rgb = capture_image()
+        print(rgb[1000, 1500])
 
 
