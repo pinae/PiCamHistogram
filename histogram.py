@@ -84,5 +84,5 @@ if __name__ == '__main__':
             for j, p in enumerate(pixels):
                 histograms[j][rgb[p[0], p[1], p[2]]] += 1
     for histogram in histograms:
-        print(", ".join(histogram))
+        print(", ".join([str(x) for x in histogram]))
 
